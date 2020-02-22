@@ -7,7 +7,7 @@ const gray = {
 } as const
 
 const violet = {
-  violet300: '#b197fc',
+  violet000: '#f3f0ff',
   violet700: '#7048e8',
 } as const
 
