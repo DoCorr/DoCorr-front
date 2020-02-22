@@ -1,0 +1,5 @@
+mutation {
+    saveDocument(arg0: { title: "sss", content: "ssss" }) {
+        id
+    }
+}
