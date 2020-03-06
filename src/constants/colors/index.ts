@@ -1,9 +1,10 @@
 const gray = {
-  gray100: '#f1f3f5',
-  gray300: '#dee2e6',
-  gray500: '#adb5bd',
-  gray700: '#495057',
-  gray800: '#343a40',
+  gray100: '#F1F1F5',
+  gray300: '#DFDEE6',
+  gray500: '#B0B0BC',
+  gray700: '#52515B',
+  gray800: '#32303B',
+  gray900: '#1E1C25',
 } as const
 
 const violet = {
@@ -11,11 +12,21 @@ const violet = {
   violet700: '#7048e8',
 } as const
 
+const red = {
+  red800: '#e03131',
+}
+
+const green = {
+  green800: '#2f9e44',
+}
+
 const colors = {
   ...gray,
   ...violet,
   primary: violet.violet700,
   secondary: gray.gray300,
+  danger: red.red800,
+  allow: green.green800,
 } as const
 
 export default colors

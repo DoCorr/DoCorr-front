@@ -1,0 +1,48 @@
+directive @defer on FIELD
+type CorrectionDocument {
+    createDate: LocalDateTime
+    docId: Long
+    document: Document
+    id: Long
+}
+
+input CorrectionDocumentInput {
+    id: Long
+    createDate: LocalDateTime
+    doc_id: Long
+    document: DocumentInput
+}
+
+type Document {
+    content: String
+    correctionDocuments: [CorrectionDocument]
+    createDate: LocalDateTime
+    id: Long
+    title: String
+    updateDate: LocalDateTime
+}
+
+input DocumentInput {
+    title: String
+    updateDate: LocalDateTime
+    id: Long
+    content: String
+    createDate: LocalDateTime
+    correctionDocuments: [CorrectionDocumentInput]
+}
+
+scalar LocalDateTime
+
+scalar Long
+
+type Mutation {
+    deleteDocument(arg0: Long): Boolean!
+    saveDocument(arg0: DocumentInput): Document
+}
+
+type Query {
+    isGood(arg0: DocumentInput): Boolean!
+    documents: [Document]
+    document(arg0: Long): Document
+}
+
