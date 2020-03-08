@@ -1,6 +1,7 @@
 import { Router, Link, Match } from '@reach/router'
 import React from 'react'
 import { RouteTypes } from './types'
+import routes from './constants/routes'
 
 type GlobalRouterProps = {
   routes: [RouteTypes]
@@ -18,9 +19,10 @@ const GlobalRouter = ({ routes }: GlobalRouterProps) => {
 }
 
 type NavLinkProps = {
-  children?:
+  children?: React.ReactNode
+  to: string
 }
-const NavLink = ({children?: React.ReactNode, to: string}) => (
+const NavLink = ({ children, to }: NavLinkProps) => (
   <Link
     getProps={({ isCurrent }) => {
       // the object returned here is passed to the
@@ -38,7 +40,7 @@ const NavLink = ({children?: React.ReactNode, to: string}) => (
 )
 
 const AppRouter = () => {
-  const router = <GlobalRouter routes={[home]} />
+  const router = <GlobalRouter routes={[routes.home]} />
   return router
 }
 
