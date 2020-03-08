@@ -1,7 +1,3 @@
-import colors from './colors'
-
-const constants = {
-  colors
-}
+const constants = {}
 
 export default constants

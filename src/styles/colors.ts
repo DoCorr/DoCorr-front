@@ -1,3 +1,7 @@
+const white = {
+  white000: '#FEFDFF',
+} as const
+
 const gray = {
   gray100: '#F1F1F5',
   gray300: '#DFDEE6',
@@ -14,19 +18,20 @@ const violet = {
 
 const red = {
   red800: '#e03131',
-}
+} as const
 
-const green = {
-  green800: '#2f9e44',
-}
+const teal = {
+  teal800: '#099268',
+} as const
 
 const colors = {
+  ...white,
   ...gray,
   ...violet,
   primary: violet.violet700,
   secondary: gray.gray300,
   danger: red.red800,
-  allow: green.green800,
+  allow: teal.teal800,
 } as const
 
 export default colors
