@@ -6,6 +6,7 @@ const gray = {
   gray100: '#F1F1F5',
   gray300: '#DFDEE6',
   gray500: '#B0B0BC',
+  gray600: '#797985',
   gray700: '#52515B',
   gray800: '#32303B',
   gray900: '#1E1C25',
