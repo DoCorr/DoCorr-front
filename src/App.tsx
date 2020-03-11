@@ -9,6 +9,13 @@ function App() {
     <div className="app">
       <Global styles={global} />
       <Router />
+      <h1>Docorr</h1>
+      <label htmlFor="id">ID: </label>
+      <input id="id" type="text" placeholder="id" />
+      <label htmlFor="pwd">Password: </label>
+      <input id="password" type="text" placeholder="password" />
+      <button>로그인</button>
+      <a href="#">회원가입</a>
     </div>
   )
 }
