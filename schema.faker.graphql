@@ -16,7 +16,7 @@ type User {
   id: ID
   name: String @fake(type: fullName)
   email: String @fake(type: email)
-  createTime: String @fake(type: recentDate)
+  createTime: String @fake(type: recentDate) 
 }
 
 type Company {
@@ -40,5 +40,5 @@ type Query {
   company(id: ID): Company
   allCompanies: [Company!]
   user(id: ID): User
-  allUsers: [User!]
+  allUsers: [User!] @listLength(min: 2, max: 20)
 }
