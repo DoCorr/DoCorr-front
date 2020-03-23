@@ -10,14 +10,70 @@
 # This tool also supports extending existing APIs. Check graphql-faker --help
 #
 # Developed with ❤️ by APIs.guru | https://github.com/APIs-guru/graphql-faker
-
+#
+# 문서
+# 유저
+# 첨삭영역
+# 첨삭 영역 코멘트
 
 type User {
   id: ID
   name: String @fake(type: fullName)
   email: String @fake(type: email)
-  createTime: String @fake(type: recentDate) 
+  profile_image: String @fake(type: imageUrl)
+  password: String @fake(type: password)
+  create_date: String @fake(type: recentDate) 
 }
+
+type Document {
+  id: ID
+  title: String @fake(type: lorem)
+  view_count: Int @fake(type: number)
+}
+
+type SteppedDocument {
+  id: ID
+  doc_id: ID
+  contents: String @fake(type: lorem)
+  create_date: String @fake(type: recentDate) 
+  update_date: String @fake(type: recentDate) 
+}
+
+type CorrectionArea {
+  id: ID!
+  user_id: ID
+  stepped_doc_id: ID
+  corr_area_code: String @fake(type: password)
+}
+
+type Correction {
+  id: ID!
+  user_id: ID
+  corr_area_id: ID
+  corr_sentence: String @fake(type: lorem)
+  create_date: String @fake(type: recentDate) 
+  update_date: String @fake(type: recentDate) 
+  like_count: Int @fake(type: number)
+  dislike_count: Int @fake(type: number)
+}
+
+type CorrectionReply {
+  id: ID!
+  user_id: ID
+  corr_id: ID
+  is_deleted: Boolean @examples(values: [false, false, true, false])
+  contents: String @fake(type: lorem)
+  create_date: String @fake(type: recentDate) 
+  update_date: String @fake(type: recentDate) 
+  like_count: Int @fake(type: number)
+  dislike_count: Int @fake(type: number)
+}
+
+
+
+
+
+
 
 type Company {
   id: ID
