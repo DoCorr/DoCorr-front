@@ -1,19 +1,20 @@
-module.exports = {
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
+const emotionBabelPreset = require('@emotion/babel-preset-css-prop').default(
+  undefined,
+  {
+    autoLabel: true,
+    labelFormat: '[local]',
+  },
+)
+
+module.exports = function({ env, paths }) {
+  return {
+    babel: {
+      plugins: ['relay', ...emotionBabelPreset.plugins],
     },
-  },
-  presets: [
-    [
-      '@emotion/babel-preset-css-prop',
-      {
-        autoLabel: true,
-        labelFormat: '[local]',
+    webpack: {
+      alias: {
+        'react-dom': '@hot-loader/react-dom',
       },
-    ],
-  ],
-  babel: {
-    plugins: ['relay'],
-  },
+    },
+  }
 }

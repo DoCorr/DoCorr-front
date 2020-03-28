@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 
-export default {
+const fonts = {
   Tinos: {
     Regular: css`
       font-family: 'Tinos', 'SpoqaHanSans', -apple-system, BlinkMacSystemFont,
@@ -24,3 +24,5 @@ export default {
     `,
   },
 } as const
+
+export default fonts

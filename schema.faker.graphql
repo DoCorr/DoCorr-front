@@ -16,13 +16,18 @@
 # 첨삭영역
 # 첨삭 영역 코멘트
 
+
+scalar LocalDateTime
+
+scalar Long
+
 type User {
   id: ID
   name: String @fake(type: fullName)
   email: String @fake(type: email)
   profile_image: String @fake(type: imageUrl)
   password: String @fake(type: password)
-  create_date: String @fake(type: recentDate) 
+  create_date: String @fake(type: recentDate)
 }
 
 type Document {
@@ -35,8 +40,8 @@ type SteppedDocument {
   id: ID
   doc_id: ID
   contents: String @fake(type: lorem)
-  create_date: String @fake(type: recentDate) 
-  update_date: String @fake(type: recentDate) 
+  create_date: String @fake(type: recentDate)
+  update_date: String @fake(type: recentDate)
 }
 
 type CorrectionArea {
@@ -51,8 +56,8 @@ type Correction {
   user_id: ID
   corr_area_id: ID
   corr_sentence: String @fake(type: lorem)
-  create_date: String @fake(type: recentDate) 
-  update_date: String @fake(type: recentDate) 
+  create_date: String @fake(type: recentDate)
+  update_date: String @fake(type: recentDate)
   like_count: Int @fake(type: number)
   dislike_count: Int @fake(type: number)
 }
@@ -63,8 +68,8 @@ type CorrectionReply {
   corr_id: ID
   is_deleted: Boolean @examples(values: [false, false, true, false])
   contents: String @fake(type: lorem)
-  create_date: String @fake(type: recentDate) 
-  update_date: String @fake(type: recentDate) 
+  create_date: String @fake(type: recentDate)
+  update_date: String @fake(type: recentDate)
   like_count: Int @fake(type: number)
   dislike_count: Int @fake(type: number)
 }
