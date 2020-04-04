@@ -3,11 +3,11 @@ import { graphql, QueryRenderer } from 'react-relay'
 import { hot } from 'react-hot-loader/root'
 import { Router } from '@reach/router'
 import relayEnv from './config/realyEnv'
-import { User } from './types/graphql.type'
+import { AppQuery } from './__generated__/AppQuery.graphql'
 
 function App() {
   return (
-    <QueryRenderer
+    <QueryRenderer<AppQuery>
       environment={relayEnv}
       query={graphql`
         query AppQuery {
@@ -25,15 +25,24 @@ function App() {
         pageId: '1',
       }}
       render={({ error, props }) => {
-        // const { allUsers } = props
-        console.log(props)
-        if (error) {
-          return <div>Error!</div>
+        if (props?.allUsers) {
+          // eslint-disable-next-line react/prop-types
+          const { allUsers } = props
+          console.log(props)
+          if (error) {
+            return <div>Error!</div>
+          }
+          if (!props) {
+            return <div>Loading...</div>
+          }
+          return (
+            <ul>
+              {allUsers?.map(user => (
+                <li>{user.name}</li>
+              ))}
+            </ul>
+          )
         }
-        if (!props) {
-          return <div>Loading...</div>
-        }
-        return <ul>{}</ul>
       }}
     />
   )
