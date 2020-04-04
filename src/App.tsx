@@ -3,8 +3,7 @@ import { graphql, QueryRenderer } from 'react-relay'
 import { hot } from 'react-hot-loader/root'
 import { Router } from '@reach/router'
 import relayEnv from './config/realyEnv'
-import { Global } from '@emotion/core'
-import global from './styles/global'
+import { User } from './types/graphql.type'
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
         pageId: '1',
       }}
       render={({ error, props }) => {
-        const { allUsers } = props
+        // const { allUsers } = props
         console.log(props)
         if (error) {
           return <div>Error!</div>
@@ -34,7 +33,7 @@ function App() {
         if (!props) {
           return <div>Loading...</div>
         }
-        return <div>User ID: {props}</div>
+        return <ul>{}</ul>
       }}
     />
   )

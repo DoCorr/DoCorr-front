@@ -1,30 +1,24 @@
-/**
- * @flow
- * @relayHash 8a1dc60b04fe54f054726214c0630d97
- */
-
+/* tslint:disable */
 /* eslint-disable */
+/* @relayHash e869314e174ed67047f59b464251cb25 */
 
-'use strict';
+import { ConcreteRequest } from "relay-runtime";
+export type AppQueryVariables = {};
+export type AppQueryResponse = {
+    readonly allUsers: ReadonlyArray<{
+        readonly name: string | null;
+        readonly id: string | null;
+        readonly email: string | null;
+        readonly profile_image: string | null;
+        readonly password: string | null;
+        readonly create_date: string | null;
+    }> | null;
+};
+export type AppQuery = {
+    readonly response: AppQueryResponse;
+    readonly variables: AppQueryVariables;
+};
 
-/*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type AppQueryVariables = {||};
-export type AppQueryResponse = {|
-  +allUsers: ?$ReadOnlyArray<{|
-    +name: ?string,
-    +id: ?string,
-    +email: ?string,
-    +profile_image: ?string,
-    +password: ?string,
-    +create_date: ?string,
-  |}>
-|};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
-|};
-*/
 
 
 /*
@@ -40,7 +34,7 @@ query AppQuery {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LinkedField",
@@ -121,7 +115,5 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node/*: any*/).hash = '51241c4eef9b4c8a1672d2f02dfea138';
-
-module.exports = node;
+(node as any).hash = '51241c4eef9b4c8a1672d2f02dfea138';
+export default node;

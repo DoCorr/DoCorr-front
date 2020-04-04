@@ -9,7 +9,10 @@ const emotionBabelPreset = require('@emotion/babel-preset-css-prop').default(
 module.exports = function({ env, paths }) {
   return {
     babel: {
-      plugins: ['relay', ...emotionBabelPreset.plugins],
+      plugins: [
+        ['relay', { artifactDirectory: './src/__generated__' }],
+        ...emotionBabelPreset.plugins,
+      ],
     },
     webpack: {
       alias: {
