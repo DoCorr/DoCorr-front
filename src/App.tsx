@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, QueryRenderer } from 'react-relay'
+import { graphql } from 'react-relay'
 import { hot } from 'react-hot-loader/root'
 import RelayEnvironment from './config/RelayEnvironment'
 import { AppQuery } from './__generated__/AppQuery.graphql'
@@ -7,10 +7,11 @@ import {
   preloadQuery,
   RelayEnvironmentProvider,
   usePreloadedQuery,
+  useRelayEnvironment,
 } from 'react-relay/hooks'
 
-const AllUsersQuery = graphql`
-  query AllUsersQuery {
+const appQuery = graphql`
+  query AppQuery {
     allUsers {
       name
       id
@@ -21,13 +22,16 @@ const AllUsersQuery = graphql`
     }
   }
 `
-const preloadedQuery = preloadQuery<AppQuery>(RelayEnvironment, AllUsersQuery, {
+const preloadedQuery = preloadQuery<AppQuery>(RelayEnvironment, appQuery, {
   /* query variables */
 })
 
 function App() {
-  const data = usePreloadedQuery(AllUsersQuery, preloadedQuery)
-  console.log(data)
+  const data = usePreloadedQuery(appQuery, preloadedQuery)
+  const environment = useRelayEnvironment()
+
+  console.log('data', data)
+  console.log(environment)
   return (
     <div>
       <header>App</header>
