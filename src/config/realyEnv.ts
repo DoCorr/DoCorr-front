@@ -29,16 +29,17 @@ function fetchQuery(operation: any, variables: any, cacheConfig: any) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify({
       query: operation.text,
       variables,
     }),
   })
-    .then(response => {
+    .then((response) => {
       return response.json()
     })
-    .then(json => {
+    .then((json) => {
       // Update cache on queries
       if (isQuery && json) {
         cache.set(queryID, variables, json)

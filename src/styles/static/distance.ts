@@ -1,8 +1,11 @@
 const distance = {
-  gap40: '4rem',
-  gap30: '3rem',
-  gap20: '2rem',
-  gap10: '1rem',
+  gap64: '4rem',
+  gap48: '3rem',
+  gap32: '2rem',
+  gap24: '1.5rem',
+  gap16: '1rem',
+  gap8: '.5rem',
+  gap4: '.25rem',
 } as const
 
 export default distance

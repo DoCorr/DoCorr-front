@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
 import { hot } from 'react-hot-loader/root'
-import { Router } from '@reach/router'
 import relayEnv from './config/realyEnv'
 import { AppQuery } from './__generated__/AppQuery.graphql'
 
@@ -26,7 +25,6 @@ function App() {
       }}
       render={({ error, props }) => {
         if (props?.allUsers) {
-          // eslint-disable-next-line react/prop-types
           const { allUsers } = props
           console.log(props)
           if (error) {
@@ -37,7 +35,7 @@ function App() {
           }
           return (
             <ul>
-              {allUsers?.map(user => (
+              {allUsers?.map((user) => (
                 <li>{user.name}</li>
               ))}
             </ul>

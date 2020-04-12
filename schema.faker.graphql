@@ -16,7 +16,6 @@
 # 첨삭영역
 # 첨삭 영역 코멘트
 
-
 scalar LocalDateTime
 
 scalar Long
