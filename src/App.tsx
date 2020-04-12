@@ -1,48 +1,37 @@
 import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
 import { hot } from 'react-hot-loader/root'
-import relayEnv from './config/realyEnv'
+import RelayEnvironment from './config/RelayEnvironment'
 import { AppQuery } from './__generated__/AppQuery.graphql'
+import {
+  preloadQuery,
+  RelayEnvironmentProvider,
+  usePreloadedQuery,
+} from 'react-relay/hooks'
+
+const AllUsersQuery = graphql`
+  query AllUsersQuery {
+    allUsers {
+      name
+      id
+      email
+      profile_image
+      password
+      create_date
+    }
+  }
+`
+const preloadedQuery = preloadQuery<AppQuery>(RelayEnvironment, AllUsersQuery, {
+  /* query variables */
+})
 
 function App() {
+  const data = usePreloadedQuery(AllUsersQuery, preloadedQuery)
+  console.log(data)
   return (
-    <QueryRenderer<AppQuery>
-      environment={relayEnv}
-      query={graphql`
-        query AppQuery {
-          allUsers {
-            name
-            id
-            email
-            profile_image
-            password
-            create_date
-          }
-        }
-      `}
-      variables={{
-        pageId: '1',
-      }}
-      render={({ error, props }) => {
-        if (props?.allUsers) {
-          const { allUsers } = props
-          console.log(props)
-          if (error) {
-            return <div>Error!</div>
-          }
-          if (!props) {
-            return <div>Loading...</div>
-          }
-          return (
-            <ul>
-              {allUsers?.map((user) => (
-                <li>{user.name}</li>
-              ))}
-            </ul>
-          )
-        }
-      }}
-    />
+    <div>
+      <header>App</header>
+    </div>
   )
   // return (
   //   <div className="app">
@@ -58,4 +47,14 @@ function App() {
   // )
 }
 
-export default hot(App)
+function AppRoot() {
+  return (
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      <React.Suspense fallback={'Loading...'}>
+        <App />
+      </React.Suspense>
+    </RelayEnvironmentProvider>
+  )
+}
+
+export default hot(AppRoot)

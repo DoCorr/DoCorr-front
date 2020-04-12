@@ -35,13 +35,13 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "yarn run relay-dev-watch && craco start",
     "build": "craco build",
     "test": "craco test",
     "__dev-relay": "npx get-graphql-schema http://localhost:9002/graphql && relay-compiler --src ./ --schema ./src/schema.graphql",
     "relay-dev": "relay-compiler --src ./src --schema ./schema.faker.graphql --language typescript --artifactDirectory ./src/__generated__",
     "faker": "npx graphql-faker --open",
-    "relay-dev-watch": "yarn relay-dev --watch"
+    "relay-dev-watch": "yarn relay-dev --watchman false $@"
   },
   "eslintConfig": {
     "extends": "react-app"

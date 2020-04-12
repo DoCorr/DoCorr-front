@@ -1,4 +1,3 @@
-// import { Router, Link, Match } from '@reach/router'
 import React from 'react'
 import { RouteTypes } from './types'
 import routes from './constants/routes'
@@ -44,4 +43,4 @@ type GlobalRouterProps = {
 //   return router
 // }
 
-export default AppRouter
+// export default AppRouter
